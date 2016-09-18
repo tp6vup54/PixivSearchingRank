@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .top-bar {
+            height: 57px;
+        }
+        .search-block {
+            position: absolute;
+            right: 0;
+        }
+        .wrapper {
+            position: relative;
+            width: 80%;
+            margin: 10px auto 0;
+        }
+        .image-list {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .image-item {
+            margin-bottom: 40px;
+            text-align: center;
+            width: 25%;
+        }
+        .rank-text {
+            font-size: 16px;
+        }
+    </style>
+    <title>My Webpage</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="top-bar">
+            <form class="search-block" action="" method="post">
+                <p><input type=text name=Search>
+                <input type=submit value=Search>
+            </form>
+        </div>
+        {% if items %}
+        <div class="image-list">
+        {% for item in items %}
+            <div class="image-item">
+                <div class="rank">
+                    <h1>
+                        <a class="rank-text">1</a>
+                    </h1>
+                </div>
+                <img src="{{ item.href }}">
+            </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+import os
+
+_basedir = os.path.abspath(os.path.dirname(__file__))
+
+PIXIV_USERNAME = 'user'
+PIXIV_PASSWORD = 'pass'
+
+del os
