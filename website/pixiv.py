@@ -1,4 +1,5 @@
 from pixivpy3 import *
+from website.image import Image
 
 class PixivParser:
     def __init__(self, username, password):
@@ -6,7 +7,6 @@ class PixivParser:
         self.api.login(username, password)
 
     def search_works(self, keywords):
-        keywords = '島風 10000users'
         result = self.api.search_works(keywords, page=1, per_page=2, mode='tag')
         if result['status'] != 'success':
             return 'failed'
@@ -14,3 +14,7 @@ class PixivParser:
         result = self.api.search_works(keywords, page=1, per_page=total, mode='tag')
         if result['status'] != 'success':
             return 'failed'
+        return [self.generate_image(i) for i in result['response']]
+
+    def generate_image(self, json):
+        return Image(json)
