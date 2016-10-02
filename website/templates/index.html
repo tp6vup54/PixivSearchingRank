@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="script.js"></script>
+    <!--<script type="text/javascript" src="script.js"></script>-->
     <style>
         .top-bar {
             height: 100px;
@@ -53,6 +53,7 @@
             width: 10px;
         }
         .image-item {
+            display: block;
             margin-bottom: 40px;
             text-align: center;
             width: 33%;
@@ -66,7 +67,10 @@
             font-size: 16px;
             font-weight: bold;
             line-height: 24px;
-            margin: 5px 10px 2px;
+            margin: 0 10px 2px;
+        }
+        .image {
+            display: block;
         }
         .user-container {
             margin: 0 10px;
@@ -74,6 +78,7 @@
         }
         .thumbnail {
             display: inline-block;
+            box-sizing: border-box;
         }
         .icon-text {
             display: inline;
@@ -86,6 +91,14 @@
             max-height: 32px;
         }
     </style>
+    <script>
+        function thumbnail_mouseover(target) {
+            target.style.boxShadow = "3px 3px 3px 3px rgba(128, 128, 128, .5)";
+        };
+        function thumbnail_mouseleave(target) {
+            target.style.boxShadow = "";
+        };
+    </script>
     <title>My Webpage</title>
 </head>
 <body>
@@ -116,9 +129,9 @@
                         </div>
                     </h1>
                 </div>
-                <!--<div class="thumbnail">-->
-                    <img src="{{ item.image_urls.px_240mw }}">
-                <!--</div>-->
+                <div class="thumbnail" onmouseover="thumbnail_mouseover(this)" onmouseleave="thumbnail_mouseleave(this)">
+                    <img class="image" src="{{ item.image_urls.px_240mw }}">
+                </div>
                 <h2>
                     <a href="{{ item.url }}" class="title" target="_blank">{{ item.title }}</a>
                 </h2>
