@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Image:
     def __init__(self, json):
         self.image_urls = ImageUrls(json['image_urls'])
@@ -5,6 +7,7 @@ class Image:
         self.url = 'http://www.pixiv.net/member_illust.php?mode=medium&illust_id=' + str(json['id'])
         self.user = User(json['user'])
         self.favorite_count = json['stats']['favorited_count']['public'] + json['stats']['favorited_count']['private']
+        self.last_modified_time = datetime.strptime(json['reuploaded_time'], '%Y-%m-%d %H:%M:%S')
 
 
 class ImageUrls:
@@ -21,4 +24,4 @@ class User:
         self.name = json['name']
         px_50 = json['profile_image_urls']['px_50x50']
         px_170 = px_50.replace('_50', '_170')
-        self.image_url = px_50
+        self.image_url = px_170

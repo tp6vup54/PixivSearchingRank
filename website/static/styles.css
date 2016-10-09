@@ -1,0 +1,119 @@
+.top-bar {
+    height: 100px;
+}
+.search-block {
+    position: absolute;
+    right: 0;
+}
+.wrapper {
+    position: relative;
+    width: 970px;
+    margin: 10px auto 0;
+}
+.image-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+a {
+    color: #258fb8;
+    text-decoration: none;
+}
+a:hover {
+    color: #66b3ff;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+ul {
+    list-style: none;
+}
+.bookmark-count {
+    color: #0069b1;
+    margin-bottom: 2px;
+    background-color: #cceeff;
+    display: inline-block;
+    padding: 0 6px;
+    font: bold 11px/18px "lucida grande", sans-serif;
+    vertical-align: middle;
+}
+.sprites-bookmark-badge {
+    display: inline-block;
+    background-image: url('http://source.pixiv.net/www/images/sprites-s9474f3c865.png');
+    background-repeat: no-repeat;
+    background-position: 0 -72px;
+    height: 10px;
+    width: 10px;
+}
+.image-item {
+    display: block;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 33%;
+}
+.rank-text {
+    font-weight: bold;
+    font-size: 16px;
+    color: #555;
+}
+.title {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    margin: 0 10px 2px;
+}
+.image {
+    display: block;
+}
+.user-container {
+    margin: 5px 10px;
+    display: inline-block;
+}
+.thumbnail {
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    border: 3px solid rgba(0, 0, 0, 0);
+    transition: border-color 0.2s linear;
+    -moz-transition: border-color 0.2s linear;    /* FF3.7+ */
+    -o-transition: border-color 0.2s linear;      /* Opera 10.5 */
+    -webkit-transition: border-color 0.2s linear; /* Saf3.2+, Chrome */
+}
+.thumbnail:hover {
+    border-color: rgba(0, 162, 232, 0.5);
+}
+.icon-text {
+    display: inline;
+    margin-left: 5px;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 32px;
+}
+.user-icon {
+    max-width: 32px;
+    max-height: 32px;
+}
+.illust_modal {
+    z-index: 10000;
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    cursor: pointer;
+    background-color: #f4f2f4;
+    text-align: center;
+}
+.original-image {
+    max-width:100%;
+    height: auto;
+}
