@@ -19,7 +19,7 @@ class PixivParser:
             result = self.api.search_works(keywords, **kwargs)
             ret = result
             if result['status'] != 'success':
-                if result['error']['system']['message'] == 'The access token provided is invalid.':
+                if result['errors']['system']['message'] == 'The access token provided is invalid.':
                     self.login()
                     again = True
                 else:

@@ -1,70 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
-    <style>
-
-    </style>
-    <script>
-        function onChangeSortMode(target) {
-            alert(target.value)
-        }
-    </script>
     <title>My Webpage</title>
 </head>
 <body>
     <div class="wrapper">
         <!--<div class="illust_modal" onclick="LargeImageModalOff(this)">-->
-            <!--<img class="original-image" src="http://i3.pixiv.net/img-original/img/2012/06/15/18/22/32/27969358_p0.jpg">-->
+            <!--<img class="original-image" src="">-->
         <!--</div>-->
         <div class="top-bar">
-            <form class="search-block" action="" method="post">
+            <div class="search-block">
                 <div align="right">
-                    <input type="text" name="Search-text">
-                    <input type="submit" value="Search">
+                    <input type="text" name="Search-text" id="search-text">
+                    <input type="submit" value="Search" id="Search">
                 </div>
                 <p><input type="radio" name="Favorite" value="2" checked> 10000
                 <input type="radio" name="Favorite" value="3"> 5000
                 <input type="radio" name="Favorite" value="4"> 1000
                 <input type="radio" name="Favorite" value="5"> 500
                 <input type="radio" name="Favorite" value="6"> 100  Upper
-            </form>
-        </div>
-        {% if items %}
-        <div class="sort-radio">
-            <input type="radio" name="Sort" value="1" onclick="onChangeSortMode(this)" checked > New
-            <input type="radio" name="Sort" value="2" onclick="onChangeSortMode(this)"> Old
-            <input type="radio" name="Sort" value="3" onclick="onChangeSortMode(this)"> High Favorite
-        </div><p><p>
-        <div class="image-list">
-        {% for item in items %}
-            <div class="image-item">
-                <div class="rank">
-                    <h1>
-                        <a class="rank-text">#{{ loop.index }}</a>
-                        <div class="bookmark-count">
-                            <div class="sprites-bookmark-badge"></div>
-                                {{ item.favorite_count }}
-                        </div>
-                    </h1>
-                </div>
-                <a href="{{ item.url }}" class="work" target="_blank">
-                    <div class="thumbnail" data-largeimg="{{ item.image_urls.large }}">
-                        <img class="image" src="{{ item.image_urls.px_240mw }}">
-                    </div>
-                </a>
-                <h2>
-                    <a href="{{ item.url }}" class="title" target="_blank">{{ item.title }}</a>
-                </h2>
-                <a href="{{ item.user.url }}" class="user-container" target="_blank">
-                    <img class="user-icon" src="{{ item.user.image_url }}">
-                    <span class="icon-text">{{ item.user.name }}</span>
-                </a>
             </div>
-        {% endfor %}
         </div>
-        {% endif %}
+        <div id="image-frame">
+            {{ response }}
+        </div>
     </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

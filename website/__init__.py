@@ -12,8 +12,17 @@ def not_found(error):
 
 @app.route('/sort', methods=['GET'])
 def sort():
-    sort_mode = request.args.get('Sort', 1, type=int)
-    return jsonify(result=a + b)
+    sort_mode = int(request.args.get('Sort-mode'))
+    items = imgs.sort_func[sort_mode]()
+    return render_template('image-frame.html', items=items, sort=sort_mode)
+
+@app.route('/search', methods=['GET'])
+def search():
+    keyword = request.args.get('Search-text')
+    favorite = int(request.args.get('Favorite'))
+    imgs.search_works(keyword, favorite)
+    items = imgs.sort_func[imgs.default_sort_type]()
+    return render_template('image-frame.html', items=items)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

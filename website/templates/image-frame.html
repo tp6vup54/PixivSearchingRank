@@ -1,0 +1,34 @@
+{% if items %}
+<div class="sort-radio" data-mode="{{ sort }}">
+    <input type="radio" name="Sort" value="1" onclick="onChangeSortMode(this)"> New
+    <input type="radio" name="Sort" value="2" onclick="onChangeSortMode(this)"> Old
+    <input type="radio" name="Sort" value="3" onclick="onChangeSortMode(this)"> High Favorite
+</div><p><p>
+<div class="image-list">
+{% for item in items %}
+    <div class="image-item">
+        <div class="rank">
+            <h1>
+                <a class="rank-text">#{{ loop.index }}</a>
+                <div class="bookmark-count">
+                    <div class="sprites-bookmark-badge"></div>
+                        {{ item.favorite_count }}
+                </div>
+            </h1>
+        </div>
+        <a href="{{ item.url }}" class="work" target="_blank">
+            <div class="thumbnail" data-largeimg="{{ item.image_urls.large }}">
+                <img class="image" src="{{ item.image_urls.px_240mw }}">
+            </div>
+        </a>
+        <h2>
+            <a href="{{ item.url }}" class="title" target="_blank">{{ item.title }}</a>
+        </h2>
+        <a href="{{ item.user.url }}" class="user-container" target="_blank">
+            <img class="user-icon" src="{{ item.user.image_url }}">
+            <span class="icon-text">{{ item.user.name }}</span>
+        </a>
+    </div>
+{% endfor %}
+</div>
+{% endif %}
