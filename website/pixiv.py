@@ -5,6 +5,7 @@ class PixivParser:
     def __init__(self, username, password):
         self.username = username
         self.password = password
+        self.progress_callback = None
         self.login()
 
     def login(self):
@@ -37,12 +38,16 @@ class PixivParser:
         if result == 'failed':
             return result
         total = result['pagination']['total']
+        if self.progress_callback:
+            self.progress_callback(total=total)
         if total == 0:
             return []
         page, perpage = self.get_page_perpage(total)
         result = self.search(keywords, page=page, per_page=perpage, mode='tag')
         if result == 'failed':
             return result
+        if self.progress_callback:
+            self.progress_callback(current=total)
         return [self.generate_image(i) for i in result['response']]
 
     def get_page_perpage(self, perpage):

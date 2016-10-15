@@ -16,7 +16,7 @@ var modalLoading = {
 
   construct : function() {
     var _this = this;
-    var html = '<div id="openModalLoading" class="modalDialog"><div><div class="loading-spinner"></div></div><div class="loading-progress" id="loading-progress"><span class="loading-text" id="loading-text">0 / 0 images loading...</span></div></div>';
+    var html = '<div id="openModalLoading" class="modalDialog"><div><div class="loading-spinner"></div></div><div class="loading-progress" id="loading-progress"><span class="loading-text" id="loading-text">0 / 0</span><span class="loading-text"> images loading...</span></div></div>';
 
     _this.appendHtml(document.body, html);
     _this.appendCss();

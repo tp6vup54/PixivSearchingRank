@@ -6,6 +6,7 @@ class ImagesController:
         self.pixiv = PixivParser(username, password)
         self.favorite_count_str = ['100000users', '50000users', '10000users', '5000users', '1000users', '500users', '100users']
         worker.session = self.pixiv
+        self.progress_callback = None
         self.images = []
         self.default_sort_type = 3
         self.sort_func = {
@@ -16,8 +17,7 @@ class ImagesController:
 
     def search_works(self, keywords, favorite_count):
         self.images = []
-        #keywords = 'ピカチュウ'
-        rq = [worker.search_works(keywords + ' ' + self.favorite_count_str[i]) for i in range(favorite_count + 1)]
+        rq = [worker.search_works(keywords + ' ' + self.favorite_count_str[i], self.progress_callback) for i in range(favorite_count + 1)]
         ret = worker.map(rq)
         for r in ret:
             self.images.extend(r)

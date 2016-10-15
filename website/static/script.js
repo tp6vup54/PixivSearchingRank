@@ -3,12 +3,9 @@ loading = false
 loadScript("static/modalLoading.js", function(){loaded = true});
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 
-socket.on('connect', function() {
-    socket.emit('test', {data: 'I\'m connected!'});
-});
-
 socket.on("update-progress", function(msg) {
     j = JSON.parse(msg)
+    document.getElementById("loading-text").textContent = j.current + " / " + j.total
 });
 
 socket.on("search", function(msg) {
@@ -63,6 +60,7 @@ function onChangeSortMode(target) {
     var sort = document.querySelector('input[name="sort"]:checked').value;
     if(loaded) {
         modalLoading.init(true);
+        document.getElementById("loading-progress").style.display = "none"
         loading = true
     }
     socket.emit("sort", {data: sort})

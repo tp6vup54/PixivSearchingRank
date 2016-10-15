@@ -7,12 +7,14 @@ monkey.patch_all(thread=False, select=False)
 session = None
 
 class AsyncWorker():
-    def __init__(self, keyword):
+    def __init__(self, keyword, progress_callback):
         self.response = None
         self.keyword = keyword
+        self.progress_callback = progress_callback
 
     def send(self):
         if session:
+            session.progress_callback = self.progress_callback
             self.response = session.search_works(self.keyword)
             return self
         else:
