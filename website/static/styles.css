@@ -117,3 +117,13 @@ ul {
     max-width:100%;
     height: auto;
 }
+.loading-progress {
+    display: none;
+    color: gray;
+    text-align: center;
+    top: 40px;
+    left: 35px;
+}
+.loading-text {
+    font-size: 12px;
+}

@@ -1,1 +1,4 @@
 pixivPy
+flask
+gevent
+flask-socketio

@@ -1,8 +1,8 @@
 {% if items %}
-<div class="sort-radio" data-mode="{{ sort }}">
-    <input type="radio" name="Sort" value="1" onclick="onChangeSortMode(this)"> New
-    <input type="radio" name="Sort" value="2" onclick="onChangeSortMode(this)"> Old
-    <input type="radio" name="Sort" value="3" onclick="onChangeSortMode(this)"> High Favorite
+<div class="sort-radio">
+    <input type="radio" name="sort" value="1" onclick="onChangeSortMode(this)"> New
+    <input type="radio" name="sort" value="2" onclick="onChangeSortMode(this)"> Old
+    <input type="radio" name="sort" value="3" onclick="onChangeSortMode(this)"> High Favorite
 </div><p><p>
 <div class="image-list">
 {% for item in items %}

@@ -1,2 +1,2 @@
-from website import app
-app.run(debug=True)
+from website import app, socketio
+socketio.run(app)

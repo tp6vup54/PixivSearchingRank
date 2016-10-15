@@ -16,7 +16,12 @@ class PixivParser:
         ret = None
         while again:
             again = False
-            result = self.api.search_works(keywords, **kwargs)
+            try:
+                result = self.api.search_works(keywords, **kwargs)
+            except PixivError:
+                self.api.login(self.username, self.password)
+                again = True
+                continue
             ret = result
             if result['status'] != 'success':
                 if result['errors']['system']['message'] == 'The access token provided is invalid.':
